@@ -8,27 +8,26 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div class="container">
-			<div class=" row mt-3 order-2 order-md-3" style= "background-color: #f8f8ff;">
-				<div class="col-12 col-md-6">
-					<h4 id="Форма">Форма</h4>
-					<form action="URL_отправки_данных" method="POST">
-						<label>
-							Имя:
+		<div class="container" style= "background-color: #f8f8ff;">
+			<div class="forma">
+                <h2 id="Форма">Форма</h2>
+                <form action="URL_отправки_данных" method="POST">
+                    <label>
+                        Имя:
+                        <br />
+                        <input name="name" placeholder="Введите имя" />
+                    </label>
+                    <br />
+                    <label>
+                        Почта:
 							<br />
-							<input name="name" value="Введите имя" />
-						</label>
-						<br />
-						<label>
-							Почта:
-							<br />
-							<input name="email" value="Введите вашу почту" type="email" />
+							<input name="email" placeholder="Введите вашу почту" type="email" />
 						</label>
 						<br />
 						<label>
 							Дата рождения:
 							<br />
-							<input name="date" value="2022-09-01" type="date" />
+							<input name="date" placeholder="2022-09-01" type="date" />
 						</label>
 						<br />
 						Пол:
@@ -59,8 +58,8 @@
 						</label>
 						<br />
 						<label>
-							Сверхспособности:
-							<br />
+                            Сверхспособности:
+                            <br />
 							<select name="powers[]" multiple="multiple">
 								<option value="Значение1">Бессмертие</option>
 								<option value="Значение2" selected="selected">Прохождение сквозь стены</option>
@@ -71,7 +70,7 @@
 						<label>
 							Биография:
 							<br />
-							<textarea name="bio">Придумайте свою биографию...</textarea>
+							<textarea name="bio" placeholder="Придумайте свою биографию..."> </textarea>
 						</label>
 						<br />
 						<br />
@@ -79,11 +78,11 @@
 							С контрактом ознакомлен(а)<input type="checkbox" name="check-1" />
 						</label>
 						<br />
-						Отправить форму: 
-						<input type="submit" value="Отправить" />
-					</form>
-				</div>
-			</div>
-			</div>
-	</body>
-</html>
+                        <div class="button">
+                            <input type="submit" value="Отправить" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </body>
+        </html>
