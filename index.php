@@ -26,8 +26,6 @@
 						<br />
 						<label>
 							Дата рождения:
-							<br />
-							<input name="date" placeholder="2022-09-01" type="date" />
 						</label>
 			<select name="year">
 				<?php for ($i=1950; $i<=2023; $i++){
