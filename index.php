@@ -11,7 +11,7 @@
 		<div class="container" style= "background-color: #f8f8ff;">
 			<div class="forma">
                 <h2 id="Форма">Форма</h2>
-                <form action="URL_отправки_данных" method="POST">
+                <form action="forma.php" method="POST">
                     <label>
                         Имя:
                         <br />
@@ -29,6 +29,12 @@
 							<br />
 							<input name="date" placeholder="2022-09-01" type="date" />
 						</label>
+			<select name="year">
+				<?php for ($i=1950; $i<=2023; $i++){
+	printf('option value="%d">%d</option>', $i, $i);
+}
+				?>
+			</select>
 						<br />
 						Пол:
 						<br />
