@@ -24,7 +24,7 @@
 							<input name="email" placeholder="Введите вашу почту" type="email" />
 						</label>
 						<br />
-						<label>
+						<label for="year" class="names">
 							Дата рождения:
 						</label>
 			<select name="year">
