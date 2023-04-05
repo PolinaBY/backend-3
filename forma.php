@@ -21,34 +21,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 // Проверяем ошибки.
 $errors = FALSE;
 if (empty($_POST['name'])) {
-  print('Введите имя.<br/>');
+  print('Заполните поле "Имя"!<br/>');
   $errors = TRUE;
 }
 
 if (empty($_POST['email']) or !(strpos($_POST['email'], '@'))) {
-  print('Введите вашу почту.<br/>');
+  print('Заполните поле "Почта!"<br/>');
   $errors = TRUE;
 }
 
 if (empty($_POST['year'])) {
-  print('Выберите год рождения.<br/>');
+  print('Выберите год рождения!<br/>');
   $errors = TRUE;
 }
 
 if (empty($_POST['sex'])) {
-  print('Укажите ваш пол.<br/>');
+  print('Укажите ваш пол!<br/>');
   $errors = TRUE;
 }
 
 
 if (empty($_POST['legs'])){
-    print ('Укажите количество конечностей.<br>');
+    print ('Укажите количество конечностей!<br>');
     $errors = true;
 
 }
 
 if (empty($_POST['powers'])){
-    print ('Выберите одну или несколько сверхспособностей.<br>');
+    print ('Выберите одну или несколько сверхспособностей!<br>');
     $errors = true;
 
 }
@@ -57,12 +57,12 @@ else {
 }
 
 if (empty($_POST['bio'])){
-    print ('Придумайте свою биографию...<br>');
+    print ('Заполните поле "Биография"<br>');
     $errors = true;
 }
 
 if (empty($_POST['check-1'])){
-    print ('Пожалуйста, ознакомтесь с контрактом.<br>');
+    print ('Вы должны ознакомться с контрактом перед отправкой формы!<br>');
     $errors = true;
 }
 
