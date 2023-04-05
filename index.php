@@ -74,7 +74,7 @@
 						<label>
 							Биография:
 							<br />
-							<textarea name="bio" placeholder="Придумайте свою биографию..."> </textarea>
+							<textarea name="bio" placeholder="Придумайте свою биографию..."></textarea>
 						</label>
 						<br />
 						<br />
