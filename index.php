@@ -37,37 +37,37 @@
 						Пол:
 						<br />
 						<label>
-							<input type="radio" checked="checked" name="sex" value="Значение1" />М
+							<input type="radio" checked="checked" name="sex" value="Мужской" />М
 						</label>
 						<label>
-							<input type="radio" name="sex" value="Значение2" />Ж
+							<input type="radio" name="sex" value="Женский" />Ж
 						</label>
 						<br />
 						Кол-во конечностей:
 						<br />
 						<label>
-							<input type="radio" checked="checked" name="legs" value="Значение1" />1
+							<input type="radio" checked="checked" name="legs" value="1" />1
 						</label>
 						<label>
-							<input type="radio" name="legs" value="Значение2" />2
+							<input type="radio" name="legs" value="2" />2
 						</label>
 						<label>
-							<input type="radio" name="legs" value="Значение3" />3
+							<input type="radio" name="legs" value="3" />3
 						</label>
 						<label>
-							<input type="radio" name="legs" value="Значение4" />4
+							<input type="radio" name="legs" value="4" />4
 						</label>
 						<label>
-							<input type="radio" name="legs" value="Значение5" />5
+							<input type="radio" name="legs" value="5" />5
 						</label>
 						<br />
 						<label>
                             Сверхспособности:
                             <br />
 							<select name="powers[]" multiple="multiple">
-								<option value="Значение1">Бессмертие</option>
-								<option value="Значение2" selected="selected">Прохождение сквозь стены</option>
-								<option value="Значение3" selected="selected">Левитация</option>
+								<option value="Бессмертие">Бессмертие</option>
+								<option value="Прохождение сквозь стены" selected="selected">Прохождение сквозь стены</option>
+								<option value="Левитация" selected="selected">Левитация</option>
 							</select>
 						</label>
 						<br />
