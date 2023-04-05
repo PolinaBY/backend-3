@@ -29,7 +29,7 @@
 						</label>
 			<select name="year">
 				<?php for ($i=1950; $i<=2023; $i++){
-	printf('option value="%d">%d</option>', $i, $i);
+	printf('<option value="%d">%d</option>', $i, $i);
 }
 				?>
 			</select>
