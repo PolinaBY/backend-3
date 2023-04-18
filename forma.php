@@ -19,12 +19,12 @@ try {
 // Получение данных из формы
 $name = $_POST["name"];
 $email = $_POST["email"];
-$birth_year = $_POST["year"];
-$gender = $_POST["sex"];
-$limbs = $_POST["legs"];
-$abilities = $_POST["powers"];
+$year = $_POST["year"];
+$sex = $_POST["sex"];
+$legs = $_POST["legs"];
+$powers = $_POST["powers"];
 $bio = $_POST["bio"];
-$contract = $_POST["agree"] == "yes";
+$agree = $_POST["agree"] == "yes";
  
 // Валидация данных
 $errors = [];
