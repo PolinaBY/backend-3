@@ -3,7 +3,7 @@
 // Настройки подключения к базе данных
 $servername = "localhost";
 $username = "u52988";
-$password = "3596996";
+$password = "4622873";
 $dbname = "u52988";
  
 // Создание подключения
