@@ -1,103 +1,68 @@
 <?php
-// Отправляем браузеру правильную кодировку,
-// файл index.php должен быть в кодировке UTF-8 без BOM.
-header('Content-Type: text/html; charset=UTF-8');
-
-// В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
-// и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-  // В суперглобальном массиве $_GET PHP хранит все параметры, переданные в текущем запросе через URL.
-  if (!empty($_GET['save'])) {
-    // Если есть параметр save, то выводим сообщение пользователю.
-    print('Форма успешно отправлена.');
-  }
-  // Включаем содержимое файла form.php.
-  include('index.php');
-  // Завершаем работу скрипта.
-  exit();
-}
-// Иначе, если запрос был методом POST, т.е. нужно проверить данные и сохранить их в XML-файл.
-
-// Проверяем ошибки.
-$errors = FALSE;
-if (empty($_POST['name'])) {
-  print('Заполните поле "Имя"!<br/>');
-  $errors = TRUE;
-}
-
-if (empty($_POST['email']) or !(strpos($_POST['email'], '@'))) {
-  print('Заполните поле "Почта!"<br/>');
-  $errors = TRUE;
-}
-
-if (empty($_POST['year'])) {
-  print('Выберите год рождения!<br/>');
-  $errors = TRUE;
-}
-
-if (empty($_POST['sex'])) {
-  print('Укажите ваш пол!<br/>');
-  $errors = TRUE;
-}
-
-
-if (empty($_POST['legs'])){
-    print ('Укажите количество конечностей!<br>');
-    $errors = true;
-
-}
-
-if (empty($_POST['powers'])){
-    print ('Выберите одну или несколько сверхспособностей!<br>');
-    $errors = true;
-
-}
-else {
-  $super = serialize($_POST['powers']);
-}
-
-if (empty($_POST['bio'])){
-    print ('Заполните поле "Биография"<br>');
-    $errors = true;
-}
-
-if (empty($_POST['check-1'])){
-    print ('Вы должны ознакомться с контрактом перед отправкой формы!<br>');
-    $errors = true;
-}
-
-if ($errors) {
-  // При наличии ошибок завершаем работу скрипта.
-  exit();
-}
-
-// Сохранение в базу данных.
-
-$user = 'u52988';
-$pass = '4622873';
-$db = new PDO('mysql:host=localhost;dbname=u52988', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-
-// Подготовленный запрос. Не именованные метки.
-
+ 
+// Настройки подключения к базе данных
+$servername = "localhost";
+$username = "u52988";
+$password = "3596996";
+$dbname = "u52988";
+ 
+// Создание подключения
 try {
-  $stmt = $db->prepare("INSERT INTO person SET name = ?, email = ?, year = ?, sex = ?, legs = ?, biography = ?");
-  $stmt -> execute(array(
-		$_POST['name'],
-        $_POST['email'],
-        $_POST['year'],
-        $_POST['sex'],
-        $_POST['legs'],
-        $_POST['bio'],
-	));
-	
-  $stmt = $db->prepare("INSERT INTO superpower SET name = ?, superpower = ?");
-  $stmt -> execute(array(
-	 	 $_POST['name'],
-		$_POST['powers'] = implode(', ', $_POST['powers']),
-	));
+    $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, [
+        PDO::ATTR_PERSISTENT => true,
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
-catch(PDOException $e){
-  print('Error: ' . $e->getMessage());
-  exit();
+ 
+// Получение данных из формы
+$name = $_POST["name"];
+$email = $_POST["email"];
+$birth_year = $_POST["year"];
+$gender = $_POST["sex"];
+$limbs = $_POST["legs"];
+$abilities = $_POST["powers"];
+$bio = $_POST["bio"];
+$contract = $_POST["check-1"] == "yes";
+ 
+// Валидация данных
+$errors = [];
+ 
+if (!preg_match("/^[a-zA-Zа-яА-ЯёЁ\s]+$/u", $name)) {
+    $errors[] = "Имя содержит недопустимые символы.";
 }
-header('Location: ?save=1');
+ 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "Неверный формат e-mail.";
+}
+ 
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo $error . "<br>";
+    }
+    die();
+}
+ 
+// Сохранение данных в базе данных
+try {
+    $stmt = $db->prepare("INSERT INTO users (name, email, year, sex, legs, bio, check-1) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$name, $email, $year, $sex, $legs, $bio, $check-1]);
+ 
+    $user_id = $db->lastInsertId();
+ 
+    $stmt = $db->prepare("SELECT id FROM powers WHERE power_name = ?");
+    foreach ($powers as $power) {
+        $stmt->execute([$power]);
+        $power_id = $stmt->fetchColumn();
+ 
+        $stmt2 = $db->prepare("INSERT INTO user_powers (user_id, power_id) VALUES (?, ?)");
+        $stmt2->execute([$user_id, $power_id]);
+    }
+ 
+    echo "Данные успешно сохранены.";
+ } 
+catch (PDOException $e) {
+    print('Error : ' . $e->getMessage());
+    exit();
+}
