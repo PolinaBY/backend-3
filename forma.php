@@ -24,7 +24,7 @@ $gender = $_POST["sex"];
 $limbs = $_POST["legs"];
 $abilities = $_POST["powers"];
 $bio = $_POST["bio"];
-$contract = $_POST["check-1"] == "yes";
+$contract = $_POST["agree"] == "yes";
  
 // Валидация данных
 $errors = [];
@@ -46,8 +46,8 @@ if (!empty($errors)) {
  
 // Сохранение данных в базе данных
 try {
-    $stmt = $db->prepare("INSERT INTO users (name, email, year, sex, legs, bio, check-1) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$name, $email, $year, $sex, $legs, $bio, $check-1]);
+    $stmt = $db->prepare("INSERT INTO users (name, email, year, sex, legs, bio, agree) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$name, $email, $year, $sex, $legs, $bio, $agree]);
  
     $user_id = $db->lastInsertId();
  
